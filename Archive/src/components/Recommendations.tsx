@@ -9,7 +9,7 @@ function RecommendationGroup({ title, subtitle, items, icon }: { title: string; 
   if (!items.length) return null;
   const Icon = icon === "attraction" ? Compass : BedDouble;
   return <section className="mt-16">
-    <div className="mb-8 text-center"><p className="eyebrow">{icon === "attraction" ? "Explore nearby" : "Stay nearby"}</p><h3 className="mt-3 font-display text-3xl text-[#789bc5]">{title}</h3><p className="mt-3 font-thai text-sm text-[#8b796a]">{subtitle}</p><div className="gold-line mx-auto mt-5 max-w-24"/></div>
+    <div className="mb-8 text-center"><p className="eyebrow">{icon === "attraction" ? "Explore nearby" : "Some tea nearby"}</p><h3 className="mt-3 font-display text-3xl text-[#789bc5]">{title}</h3><p className="mt-3 font-thai text-sm text-[#8b796a]">{subtitle}</p><div className="gold-line mx-auto mt-5 max-w-24"/></div>
     <div className="mx-auto grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {items.map(item => { const index = active[item.id] || 0; const photos = item.images || []; return <article key={item.id} className="card overflow-hidden">
         <div className="relative aspect-[4/3] bg-[#edf2f7]">
@@ -29,7 +29,7 @@ export default function Recommendations() {
     <SectionBackground section="recommendations" className="pointer-events-none absolute inset-0 -z-10" as="div"/>
     <div className="mx-auto max-w-7xl px-5"><div className="text-center"><p className="eyebrow">Around the venue</p><h2 className="mt-3 font-display text-3xl text-[#789bc5] sm:text-4xl">Explore & Stay</h2><p className="mt-3 font-thai text-sm text-[#8b796a]">สถานที่ท่องเที่ยวและที่พักแนะนำใกล้สถานที่จัดงาน</p></div>
       <RecommendationGroup title="Nearby Attractions" subtitle="สถานที่ท่องเที่ยวใกล้เคียง" items={items.filter(x => x.category === "attraction")} icon="attraction"/>
-      <RecommendationGroup title="Recommended Stays" subtitle="ที่พักแนะนำใกล้สถานที่จัดงาน" items={items.filter(x => x.category === "accommodation")} icon="accommodation"/>
+      <RecommendationGroup title="Recommended Cafe" subtitle="คาเฟ่ใกล้สถานที่จัดงาน" items={items.filter(x => x.category === "accommodation")} icon="accommodation"/>
     </div>
   </section>;
 }
