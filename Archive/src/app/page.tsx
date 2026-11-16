@@ -1,5 +1,11 @@
-import Image from "next/image";
-import { MapPin, Heart, Sparkles, CalendarDays, Car } from "lucide-react";
+
+import {
+  MapPin,
+  Sparkles,
+  CalendarDays,
+  Car,
+} from "lucide-react";
+
 import Countdown from "@/components/Countdown";
 import RSVPForm from "@/components/RSVPForm";
 import Guestbook from "@/components/Guestbook";
@@ -10,133 +16,438 @@ import DigitalGift from "@/components/DigitalGift";
 import Recommendations from "@/components/Recommendations";
 import SectionBackground from "@/components/SectionBackground";
 import WeddingGallery from "@/components/WeddingGallery";
+
 import { wedding } from "@/lib/wedding";
 
-function SectionTitle({ kicker, title, subtitle }: { kicker: string; title: string; subtitle?: string }) {
-  return <div className="mb-10 text-center">
-    <p className="eyebrow">{kicker}</p>
-    <h2 className="mt-3 font-display text-3xl text-[#789bc5] sm:text-4xl">{title}</h2>
-    {subtitle && <p className="mt-3 font-thai text-sm text-[#8b796a]">{subtitle}</p>}
-    <div className="gold-line mx-auto mt-6 max-w-28"/>
-  </div>;
+/* =========================================
+   SECTION TITLE
+========================================= */
+
+function SectionTitle({
+  kicker,
+  title,
+  subtitle,
+}: {
+  kicker: string;
+  title: string;
+  subtitle?: string;
+}) {
+  return (
+    <div className="mb-10 text-center">
+      <p className="eyebrow">{kicker}</p>
+
+      <h2 className="mt-3 font-display text-3xl text-[#789bc5] sm:text-4xl">
+        {title}
+      </h2>
+
+      {subtitle && (
+        <p className="mt-3 font-thai text-sm text-[#8b796a]">
+          {subtitle}
+        </p>
+      )}
+
+      <div className="gold-line mx-auto mt-6 max-w-28" />
+    </div>
+  );
 }
 
+/* =========================================
+   HOME PAGE
+========================================= */
+
 export default function Home() {
-  return <main className="overflow-hidden">
-    <MusicToggle/>
-    <section className="relative isolate flex min-h-[92svh] items-center justify-center px-5 py-20 text-center">
-      <SectionBackground section="hero" className="pointer-events-none absolute inset-0 -z-10" as="div"/>
-      <div className="pointer-events-none absolute inset-5 border border-[#d9e4f0] sm:inset-8"/>
-      <div className="pointer-events-none absolute inset-7 border border-[#eadfcf] sm:inset-10"/>
-      <div className="relative z-10 mx-auto max-w-3xl">
-        
-        
-      </div>
-      <div className="absolute -left-12 top-24 h-40 w-40 rounded-full bg-[#f6dadd]/40 blur-3xl"/>
-      <div className="absolute -right-12 bottom-24 h-44 w-44 rounded-full bg-[#dce7f4]/70 blur-3xl"/>
-    </section>
+  return (
+    <main className="overflow-hidden">
 
-    <WeddingGallery placement="after-hero"/>
+      {/* MUSIC CONTROL */}
+      <MusicToggle />
 
-    <section className="section-space relative isolate bg-[#fbfaf7] text-center">
-      <SectionBackground section="countdown" className="pointer-events-none absolute inset-0 -z-10" as="div"/>
-      <SectionTitle title="Counting down to forever"/>
-      <Countdown/>
-    </section>
+      {/* =====================================
+          HERO SECTION
+      ===================================== */}
 
-    <WeddingGallery placement="after-countdown"/>
+      <section className="relative isolate flex min-h-[92svh] items-center justify-center px-5 py-20 text-center">
 
-    <section id="details" className="section-space relative isolate">
-      <SectionBackground section="details" className="pointer-events-none absolute inset-0 -z-10" as="div"/>
-      <SectionTitle title="Wedding Details"/>
-      <div className="mx-auto grid max-w-4xl gap-5 md:grid-cols-2">
-        <div className="card p-7 text-center">
-          <CalendarDays className="mx-auto text-[#789bc5]" size={28}/>
-          <p className="eyebrow mt-4">Date & time</p>
-          <h3 className="mt-2 font-display text-2xl text-[#789bc5]">22 January 2027</h3>
-          <p className="mt-2 font-thai text-sm text-[#79583f]">เริ่มพิธีเวลา 07.00 น.</p>
+        <SectionBackground
+          section="hero"
+          className="pointer-events-none absolute inset-0 -z-10"
+          as="div"
+        />
+
+        <div className="pointer-events-none absolute inset-5 border border-[#d9e4f0] sm:inset-8" />
+
+        <div className="pointer-events-none absolute inset-7 border border-[#eadfcf] sm:inset-10" />
+
+        <div className="relative z-10 mx-auto max-w-3xl">
+          {/* พื้นที่เนื้อหา Hero เดิม */}
         </div>
-        <div className="card p-7 text-center">
-          <MapPin className="mx-auto text-[#789bc5]" size={28}/>
-          <p className="eyebrow mt-4">Venue</p>
-          <h3 className="mt-2 font-thai text-xl text-[#789bc5]">{wedding.venue}</h3>
-          <p className="mt-2 font-thai text-sm text-[#79583f]">{wedding.province}</p>
-        </div>
-      </div>
-      <div className="mt-8 text-center"><CalendarButton/></div>
-    </section>
 
-    <WeddingGallery placement="after-details"/>
+        <div className="absolute -left-12 top-24 h-40 w-40 rounded-full bg-[#f6dadd]/40 blur-3xl" />
 
-    <section className="section-space relative isolate bg-[#fbfaf7]">
-      <SectionBackground section="timeline" className="pointer-events-none absolute inset-0 -z-10" as="div"/>
-      <SectionTitle kicker="Order of events" title="The Wedding Day" />
-      <Timeline/>
-    </section>
+        <div className="absolute -right-12 bottom-24 h-44 w-44 rounded-full bg-[#dce7f4]/70 blur-3xl" />
 
-    <WeddingGallery placement="after-timeline"/>
+      </section>
 
-    <section className="section-space relative isolate">
-      <SectionBackground section="venue" className="pointer-events-none absolute inset-0 -z-10" as="div"/>
-      <SectionTitle kicker="Find us" title="The Venue" subtitle={`${wedding.venue} · ${wedding.province}`}/>
-      <div className="card mx-auto max-w-4xl overflow-hidden">
-        <div className="grid md:grid-cols-2">
-          <div className="flex min-h-64 flex-col justify-center bg-[#eaf0f6] p-8">
-            <MapPin size={30} className="text-[#789bc5]"/>
-            <h3 className="mt-5 font-thai text-xl text-[#79583f]">{wedding.venue}</h3>
-            <p className="mt-2 font-thai text-sm text-[#8b796a]">{wedding.province}</p>
-            <p className="mt-5 flex items-center gap-2 font-thai text-xs text-[#8b796a]"><Car size={16}/> {wedding.parkingNote}</p>
-            <a className="btn-primary mt-6 inline-flex w-fit" target="_blank" rel="noreferrer"
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(wedding.mapsQuery)}`}>เปิด Google Maps</a>
+      {/* GALLERY AFTER HERO */}
+      <WeddingGallery placement="after-hero" />
+
+
+      {/* =====================================
+          COUNTDOWN SECTION
+      ===================================== */}
+
+      <section className="section-space relative isolate bg-[#fbfaf7] text-center">
+
+        <SectionBackground
+          section="countdown"
+          className="pointer-events-none absolute inset-0 -z-10"
+          as="div"
+        />
+
+        <SectionTitle
+          kicker="Our special day"
+          title="Counting down to forever"
+        />
+
+        <Countdown />
+
+      </section>
+
+      <WeddingGallery placement="after-countdown" />
+
+
+      {/* =====================================
+          WEDDING DETAILS
+      ===================================== */}
+
+      <section
+        id="details"
+        className="section-space relative isolate"
+      >
+
+        <SectionBackground
+          section="details"
+          className="pointer-events-none absolute inset-0 -z-10"
+          as="div"
+        />
+
+        <SectionTitle
+          kicker="Save the date"
+          title="Wedding Details"
+        />
+
+        <div className="mx-auto grid max-w-4xl gap-5 md:grid-cols-2">
+
+          {/* DATE */}
+          <div className="card p-7 text-center">
+
+            <CalendarDays
+              className="mx-auto text-[#789bc5]"
+              size={28}
+            />
+
+            <p className="eyebrow mt-4">
+              Date & time
+            </p>
+
+            <h3 className="mt-2 font-display text-2xl text-[#789bc5]">
+              22 January 2027
+            </h3>
+
+            <p className="mt-2 font-thai text-sm text-[#79583f]">
+              เริ่มพิธีเวลา 07.00 น.
+            </p>
+
           </div>
-          <div className="flex min-h-64 items-center justify-center bg-[#f7f4ee] p-8 text-center">
-            <div><Sparkles className="mx-auto text-[#c6a878]" size={32}/><p className="mt-4 font-display text-2xl text-[#789bc5]">See you there</p><p className="mt-2 font-thai text-sm text-[#79583f]">เรารอพบคุณในวันพิเศษนี้</p></div>
+
+
+          {/* LOCATION */}
+          <div className="card p-7 text-center">
+
+            <MapPin
+              className="mx-auto text-[#789bc5]"
+              size={28}
+            />
+
+            <p className="eyebrow mt-4">
+              Venue
+            </p>
+
+            <h3 className="mt-2 font-thai text-xl text-[#789bc5]">
+              {wedding.venue}
+            </h3>
+
+            <p className="mt-2 font-thai text-sm text-[#79583f]">
+              {wedding.province}
+            </p>
+
           </div>
+
         </div>
-      </div>
-    </section>
 
-    <WeddingGallery placement="after-venue"/>
+        <div className="mt-8 text-center">
+          <CalendarButton />
+        </div>
 
-    <section id="rsvp" className="section-space relative isolate bg-[#fbfaf7]">
-      <SectionBackground section="rsvp" className="pointer-events-none absolute inset-0 -z-10" as="div"/>
-      <SectionTitle kicker="Kindly respond" title="Will you join us?" subtitle="ขอความกรุณาตอบรับการเข้าร่วมงาน"/>
-      <div className="mx-auto max-w-xl"><RSVPForm/></div>
-    </section>
+      </section>
 
-    <WeddingGallery placement="after-rsvp"/>
+      <WeddingGallery placement="after-details" />
 
-    <section id="guestbook" className="section-space relative isolate">
-      <SectionBackground section="guestbook" className="pointer-events-none absolute inset-0 -z-10" as="div"/>
-      <SectionTitle kicker="With love" title="Leave a wish" subtitle="ร่วมฝากข้อความและคำอวยพรให้กับเรา"/>
-      <Guestbook/>
-    </section>
 
-    
+      {/* =====================================
+          TIMELINE SECTION
+      ===================================== */}
 
-    
-    <WeddingGallery placement="after-gift"/>
-    <Recommendations/>
-    <WeddingGallery placement="after-recommendations"/>
-    <section className="section-space relative isolate bg-[#fbfaf7]">
-      <SectionBackground section="gift" className="pointer-events-none absolute inset-0 -z-10" as="div"/>
-      <SectionTitle title="Digital Gift"/>
-      <DigitalGift/>
-    </section>
-    
-    <WeddingGallery placement="before-footer"/>
-    <section className="relative isolate bg-[#789bc5] px-5 py-12 text-center text-white">
-      <SectionBackground section="footer" className="pointer-events-none absolute inset-0 -z-10" as="div"/>
-      <p className="font-display text-2xl">Your presence is our present</p>
-      <p className="mt-5 text-xs tracking-widest">PARICHART & MONMANAT · 22.01.2027</p>
-    </section>
-    <footer className="luxury-footer px-5 py-10 text-center">
-      <p className="text-xs text-[#9a8b7e]">Made with love · Parichart & Monmanat</p>
-      <div className="mb-5 flex flex-wrap items-center justify-center gap-3">
-        
-        <a href="/admin/login" className="rounded-full border border-white/80 bg-white/75 px-3 py-2 text-[11px] text-[#9a8b7e] shadow-sm transition hover:bg-white hover:text-[#789bc5]">Admin</a>
-      </div>
-      
-    </footer>
-  </main>;
+      <section className="section-space relative isolate bg-[#fbfaf7]">
+
+        <SectionBackground
+          section="timeline"
+          className="pointer-events-none absolute inset-0 -z-10"
+          as="div"
+        />
+
+        <SectionTitle
+          kicker="Order of events"
+          title="The Wedding Day"
+        />
+
+        <Timeline />
+
+      </section>
+
+      <WeddingGallery placement="after-timeline" />
+
+
+      {/* =====================================
+          VENUE SECTION
+      ===================================== */}
+
+      <section className="section-space relative isolate">
+
+        <SectionBackground
+          section="venue"
+          className="pointer-events-none absolute inset-0 -z-10"
+          as="div"
+        />
+
+        <SectionTitle
+          kicker="Find us"
+          title="The Venue"
+          subtitle={`${wedding.venue} · ${wedding.province}`}
+        />
+
+        <div className="card mx-auto max-w-4xl overflow-hidden">
+
+          <div className="grid md:grid-cols-2">
+
+            {/* VENUE INFORMATION */}
+            <div className="flex min-h-64 flex-col justify-center bg-[#eaf0f6] p-8">
+
+              <MapPin
+                size={30}
+                className="text-[#789bc5]"
+              />
+
+              <h3 className="mt-5 font-thai text-xl text-[#79583f]">
+                {wedding.venue}
+              </h3>
+
+              <p className="mt-2 font-thai text-sm text-[#8b796a]">
+                {wedding.province}
+              </p>
+
+              <p className="mt-5 flex items-center gap-2 font-thai text-xs text-[#8b796a]">
+
+                <Car size={16} />
+
+                {wedding.parkingNote}
+
+              </p>
+
+              <a
+                className="btn-primary mt-6 inline-flex w-fit"
+                target="_blank"
+                rel="noreferrer"
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                  wedding.mapsQuery
+                )}`}
+              >
+                เปิด Google Maps
+              </a>
+
+            </div>
+
+
+            {/* VENUE DECORATION */}
+            <div className="flex min-h-64 items-center justify-center bg-[#f7f4ee] p-8 text-center">
+
+              <div>
+
+                <Sparkles
+                  className="mx-auto text-[#c6a878]"
+                  size={32}
+                />
+
+                <p className="mt-4 font-display text-2xl text-[#789bc5]">
+                  See you there
+                </p>
+
+                <p className="mt-2 font-thai text-sm text-[#79583f]">
+                  เรารอพบคุณในวันพิเศษนี้
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <WeddingGallery placement="after-venue" />
+
+
+      {/* =====================================
+          RSVP SECTION
+      ===================================== */}
+
+      <section
+        id="rsvp"
+        className="section-space relative isolate bg-[#fbfaf7]"
+      >
+
+        <SectionBackground
+          section="rsvp"
+          className="pointer-events-none absolute inset-0 -z-10"
+          as="div"
+        />
+
+        <SectionTitle
+          kicker="Kindly respond"
+          title="Will you join us?"
+          subtitle="ขอความกรุณาตอบรับการเข้าร่วมงาน"
+        />
+
+        <div className="mx-auto max-w-xl">
+          <RSVPForm />
+        </div>
+
+      </section>
+
+      <WeddingGallery placement="after-rsvp" />
+
+
+      {/* =====================================
+          GUESTBOOK SECTION
+      ===================================== */}
+
+      <section
+        id="guestbook"
+        className="section-space relative isolate"
+      >
+
+        <SectionBackground
+          section="guestbook"
+          className="pointer-events-none absolute inset-0 -z-10"
+          as="div"
+        />
+
+        <SectionTitle
+          kicker="With love"
+          title="Leave a wish"
+          subtitle="ร่วมฝากข้อความและคำอวยพรให้กับเรา"
+        />
+
+        <Guestbook />
+
+      </section>
+
+
+      {/* =====================================
+          RECOMMENDATIONS
+      ===================================== */}
+
+      <WeddingGallery placement="after-gift" />
+
+      <Recommendations />
+
+      <WeddingGallery placement="after-recommendations" />
+
+
+      {/* =====================================
+          DIGITAL GIFT SECTION
+      ===================================== */}
+
+      <section className="section-space relative isolate bg-[#fbfaf7]">
+
+        <SectionBackground
+          section="gift"
+          className="pointer-events-none absolute inset-0 -z-10"
+          as="div"
+        />
+
+        <SectionTitle
+          kicker="A little gift"
+          title="Digital Gift"
+        />
+
+        <DigitalGift />
+
+      </section>
+
+
+      {/* GALLERY BEFORE FOOTER */}
+      <WeddingGallery placement="before-footer" />
+
+
+      {/* =====================================
+          FOOTER SECTION
+      ===================================== */}
+
+      <section className="relative isolate bg-[#789bc5] px-5 py-12 text-center text-white">
+
+        <SectionBackground
+          section="footer"
+          className="pointer-events-none absolute inset-0 -z-10"
+          as="div"
+        />
+
+        <p className="font-display text-2xl">
+          Your presence is our present
+        </p>
+
+        <p className="mt-5 text-xs tracking-widest">
+          PARICHART & MONMANAT · 22.01.2027
+        </p>
+
+      </section>
+
+
+      {/* =====================================
+          ADMIN FOOTER
+      ===================================== */}
+
+      <footer className="luxury-footer px-5 py-10 text-center">
+
+        <p className="text-xs text-[#9a8b7e]">
+          Made with love · Parichart & Monmanat
+        </p>
+
+        <div className="mb-5 flex flex-wrap items-center justify-center gap-3">
+
+          <a
+            href="/admin/login"
+            className="rounded-full border border-white/80 bg-white/75 px-3 py-2 text-[11px] text-[#9a8b7e] shadow-sm transition hover:bg-white hover:text-[#789bc5]"
+          >
+            Admin
+          </a>
+
+        </div>
+
+      </footer>
+
+    </main>
+  );
 }
