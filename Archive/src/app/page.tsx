@@ -29,17 +29,8 @@ export default function Home() {
       <div className="pointer-events-none absolute inset-5 border border-[#d9e4f0] sm:inset-8"/>
       <div className="pointer-events-none absolute inset-7 border border-[#eadfcf] sm:inset-10"/>
       <div className="relative z-10 mx-auto max-w-3xl">
-        <p className="eyebrow">Together with their families</p>
-        <p className="mt-12 font-thai text-sm text-[#79583f]">ขอเรียนเชิญร่วมเป็นเกียรติในพิธีมงคลสมรส</p>
-        <div className="mt-8 font-display text-5xl tracking-wide text-[#789bc5] sm:text-7xl">{wedding.brideLatin}</div>
-        <div className="my-2 flex items-center justify-center gap-4 text-[#ed9296]">
-          <span className="h-px w-12 bg-[#c6a878]"/><Heart size={19} fill="currentColor"/><span className="h-px w-12 bg-[#c6a878]"/>
-        </div>
-        <div className="font-display text-5xl tracking-wide text-[#789bc5] sm:text-7xl">{wedding.groomLatin}</div>
-        <p className="mt-8 font-thai text-lg text-[#79583f]">{wedding.bride} <span className="text-[#ed9296]">&</span> {wedding.groom}</p>
-        <p className="mt-5 font-display text-xl tracking-[.18em] text-[#789bc5]">{wedding.dateEnglish}</p>
-        <div className="mt-10 flex justify-center"><a href="#details" className="btn-primary">Discover our day <span aria-hidden>↓</span></a></div>
-        <p className="mt-12 text-[10px] tracking-[.3em] text-[#a89582]">A DAY TO REMEMBER · 2027</p>
+        
+        
       </div>
       <div className="absolute -left-12 top-24 h-40 w-40 rounded-full bg-[#f6dadd]/40 blur-3xl"/>
       <div className="absolute -right-12 bottom-24 h-44 w-44 rounded-full bg-[#dce7f4]/70 blur-3xl"/>
@@ -49,16 +40,15 @@ export default function Home() {
 
     <section className="section-space relative isolate bg-[#fbfaf7] text-center">
       <SectionBackground section="countdown" className="pointer-events-none absolute inset-0 -z-10" as="div"/>
-      <SectionTitle kicker="Save the date" title="Counting down to forever" subtitle="นับถอยหลังสู่วันสำคัญของเรา"/>
+      <SectionTitle title="Counting down to forever"/>
       <Countdown/>
-      <p className="mt-8 font-thai text-sm text-[#79583f]">วันศุกร์ที่ 22 มกราคม 2570</p>
     </section>
 
     <WeddingGallery placement="after-countdown"/>
 
     <section id="details" className="section-space relative isolate">
       <SectionBackground section="details" className="pointer-events-none absolute inset-0 -z-10" as="div"/>
-      <SectionTitle kicker="The celebration" title="Wedding Details" subtitle="รายละเอียดพิธีมงคลสมรส"/>
+      <SectionTitle title="Wedding Details"/>
       <div className="mx-auto grid max-w-4xl gap-5 md:grid-cols-2">
         <div className="card p-7 text-center">
           <CalendarDays className="mx-auto text-[#789bc5]" size={28}/>
@@ -80,7 +70,7 @@ export default function Home() {
 
     <section className="section-space relative isolate bg-[#fbfaf7]">
       <SectionBackground section="timeline" className="pointer-events-none absolute inset-0 -z-10" as="div"/>
-      <SectionTitle kicker="Order of events" title="The Wedding Day" subtitle="กำหนดการภายในงาน"/>
+      <SectionTitle kicker="Order of events" title="The Wedding Day" />
       <Timeline/>
     </section>
 
@@ -122,16 +112,18 @@ export default function Home() {
       <Guestbook/>
     </section>
 
-    <WeddingGallery placement="after-guestbook"/>
+    
 
-    <section className="section-space relative isolate bg-[#fbfaf7]">
-      <SectionBackground section="gift" className="pointer-events-none absolute inset-0 -z-10" as="div"/>
-      <SectionTitle kicker="A little gift" title="Digital Gift" subtitle="คำอวยพรและความปรารถนาดีของคุณมีค่ากับเรามากที่สุด"/>
-      <DigitalGift/>
-    </section>
+    
     <WeddingGallery placement="after-gift"/>
     <Recommendations/>
     <WeddingGallery placement="after-recommendations"/>
+    <section className="section-space relative isolate bg-[#fbfaf7]">
+      <SectionBackground section="gift" className="pointer-events-none absolute inset-0 -z-10" as="div"/>
+      <SectionTitle title="Digital Gift"/>
+      <DigitalGift/>
+    </section>
+    
     <WeddingGallery placement="before-footer"/>
     <section className="relative isolate bg-[#789bc5] px-5 py-12 text-center text-white">
       <SectionBackground section="footer" className="pointer-events-none absolute inset-0 -z-10" as="div"/>
@@ -139,11 +131,12 @@ export default function Home() {
       <p className="mt-5 text-xs tracking-widest">PARICHART & MONMANAT · 22.01.2027</p>
     </section>
     <footer className="luxury-footer px-5 py-10 text-center">
+      <p className="text-xs text-[#9a8b7e]">Made with love · Parichart & Monmanat</p>
       <div className="mb-5 flex flex-wrap items-center justify-center gap-3">
-        <a href="#guestbook" className="btn-primary">เข้าดูคำอวยพร ♡</a>
+        
         <a href="/admin/login" className="rounded-full border border-white/80 bg-white/75 px-3 py-2 text-[11px] text-[#9a8b7e] shadow-sm transition hover:bg-white hover:text-[#789bc5]">Admin</a>
       </div>
-      <p className="text-xs text-[#9a8b7e]">Made with love · Parichart & Monmanat</p>
+      
     </footer>
   </main>;
 }
