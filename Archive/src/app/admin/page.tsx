@@ -85,10 +85,12 @@ export default function AdminDashboard() {
       <AdminRecommendations />
       <AdminBackgrounds />
       <AdminGallery />
+      
       <section className="card mt-7 p-5">
         <h2 className="font-thai text-lg text-[#79583f]">ข้อความอวยพร ({wishes.length})</h2>
         <div className="mt-4 grid gap-3 md:grid-cols-2">{wishes.map(w=><article key={w.id} className="rounded-xl bg-[#f7f4ee] p-4"><p className="font-thai text-sm leading-7">{w.message}</p><p className="mt-3 text-xs text-[#789bc5]">— {w.guest_name}</p></article>)}</div>
       </section>
+      
     </div>
   </main>;
 }
