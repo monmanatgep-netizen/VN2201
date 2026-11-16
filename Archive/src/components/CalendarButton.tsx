@@ -11,6 +11,6 @@ export default function CalendarButton() {
   const google = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${details}&location=${location}`;
   return <div className="flex flex-wrap justify-center gap-3">
     <a className="btn-outline inline-flex items-center justify-center" href={google} target="_blank" rel="noreferrer">Add to Google Calendar</a>
-    <a className="btn-outline inline-flex items-center justify-center" href="/calendar">Download Apple Calendar (.ics)</a>
+    
   </div>;
 }
